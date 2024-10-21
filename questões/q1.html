@@ -1,0 +1,102 @@
+<!--
+1. Crie um formulário com um campo de entrada de texto e um botão. Quando o botão
+for clicado, capture o valor do campo de texto e exiba-o em um parágrafo abaixo do
+formulário.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 1</title>
+    <style>
+       *{
+        margin: 0;
+       }
+        #bkg {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            color: white;
+            background-image: linear-gradient(to bottom, #CA6769, #F4998A);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        #fieldset {
+            width: auto;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: candara;
+            font-size: larger;
+            font-weight: bold;
+            line-height: normal;
+            text-align: center;
+        }
+
+        input[type=text]{
+            background-color: #F4998A;
+            border-color: #F0B799;
+        }
+
+        #btn {
+            background-color: #F4998A;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-family: candara;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        #btn:hover{
+            background-color: #CDC99F;
+            color: #CA6769;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="fieldset">
+                <fieldset>
+                    <legend>Exibir Texto</legend>
+                    <input type="text" name="texto" id="texto">
+
+                    <button id="btn" onclick="exibirTexto()">Exibir</button>
+
+                    <div id="div"></div>
+                </fieldset>
+            </div>
+    </div>
+    </form>
+
+
+    <script>
+        function exibirTexto() {
+            event.preventDefault();
+            let texto = document.getElementById("texto").value;
+
+            if (!(texto.length === 0)) {
+                let div = document.getElementById("div");
+                let h3 = document.createElement("h3");
+
+                h3.textContent = texto;
+                div.appendChild(h3);
+
+            } else {
+                alert("Digite algo.")
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

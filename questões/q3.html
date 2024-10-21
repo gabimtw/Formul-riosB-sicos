@@ -1,0 +1,206 @@
+<!--
+3. Desenvolva um formulário com quatro campos (nome, e-mail, telefone 
+(que ao digitar transforme no padrão (xx) xxxx-xxxx) e senha). Ao clicar em
+um botão "Limpar", os campos do formulário de nome e email devem ser imprimidos e
+possibilitar apagar da tela. o campo de senha deve verificar se a senha possui no
+mínimo: uma letra maiúscula, 6 digitos, um número.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 3</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #bkg {
+            background-image: radial-gradient(#e66465, #9198e5);
+            color: white;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #form {
+            background-color: #D8BFD8;
+            border-radius: 10%;
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        p {
+            font-size: small;
+            text-align: center;
+        }
+        input[type=button] {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border-radius: 15%;
+            padding: 3px;
+            border-color: white;
+            color: rgb(0, 0, 0);
+            background-color: #FFE4E1;
+
+            cursor: pointer;
+            border: none;
+        }
+
+        input[type=button]:hover {
+            background-color: #e66465;
+            color: #ffffff
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="form">
+                <br>
+                <h3>Nome: </h3>
+                <br>
+                <input type="text" id="nome" required>
+                <input type="button" value="Enviar Nome" id="btn" onclick="imprimirNome()">
+                <br>
+                <br>
+                <div id="divNome"></div>
+
+                <h3>Email: </h3>
+                <br>
+                <input type="email" id="email" required>
+                <input type="button" value="Enviar Email" onclick="enviarEmail()">
+                <br><br>
+                <div id="divEmail"></div>
+
+
+                <h3>Telefone: </h3>
+                <br>
+                <input type="text" id="telefone" required>
+                <input type="button" id="btnTelefone" onclick="enviarTelefone()" value="Enviar Telefone">
+                <br><br>
+                <div id="divTelefone"></div>
+
+
+                <h3>Senha: </h3>
+                <br>
+                <input type="password" id="senha" required>
+                <input type="button" id="btnSenha" onclick="enviarSenha()" value="Enviar Senha">
+                <br>
+                <p>A senha deve conter no mínimo 6 dígitos, com pelo menos uma letra maiúscula e um número</p>
+                <br>
+                <div id="divSenha"></div>
+                <br>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function imprimirNome() {
+            let divNome = document.getElementById("divNome");
+            divNome.innerHTML = "";
+
+            let h3Nome = document.createElement("h3");
+
+            let nome = document.getElementById("nome").value;
+            h3Nome.textContent = "Nome: " + nome;
+
+            divNome.appendChild(h3Nome);
+        }
+
+        function enviarEmail() {
+            let email = document.getElementById("email").value;
+
+            let divEmail = document.getElementById("divEmail");
+            divEmail.innerHTML = "";
+
+            let h3Email = document.createElement("h3");
+
+            h3Email.textContent = "Email: " + email;
+
+            let botaoEmail = document.createElement("button");
+            botaoEmail.textContent = "Verificar Existência"
+            botaoEmail.addEventListener("click", verificarEmail);
+            botaoEmail.id = "botaoEmailVerificar";
+
+            divEmail.appendChild(h3Email);
+            divEmail.appendChild(botaoEmail);
+        }
+
+        function verificarEmail() {
+            let email = document.getElementById("email").value;
+            let emailCadastrados = ["teste@dominio.com", "usuario@dominio.com", "email@dominio.com"];
+
+            if (emailCadastrados.includes(email)) {
+                alert("email já cadastrado anteriormente.");
+            } else {
+                alert("email não cadastrado anteriormente.");
+            }
+        }
+
+        function enviarTelefone() {
+            let divTelefone = document.getElementById("divTelefone");
+            divTelefone.innerHTML = "";
+
+            let telefone = document.getElementById("telefone").value;
+
+            if (telefone.length === 10) {
+                let telefoneCorrigido = `(${telefone.slice(0, 2)})` + `${telefone.slice(2, 6)}` +
+                    "-" + `${telefone.slice(6)}`;
+
+                let h3Telefone = document.createElement("h3");
+                h3Telefone.textContent = "Telefone: " + telefoneCorrigido;
+
+                divTelefone.appendChild(h3Telefone);
+            } else {
+                alert("O telefone deve ter 10 dígitos.");
+            }
+        }
+
+        function enviarSenha() {
+            senha = document.getElementById("senha").value;
+            let divSenha = document.getElementById("divSenha");
+            divSenha.innerHTML = "";
+
+            let regex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+            /* ->  ^: Indica o início da string. O regex vai começar 
+            a verificar a senha desde o primeiro caractere.
+            
+            ->  (?=.*[A-Z]): Esta é uma lookahead assertion, ou seja,
+            uma condição que precisa ser atendida em algum ponto da 
+            string, mas sem consumir caracteres. */
+            // --> .*[A-Z]: Significa que a string pode ter qualquer 
+            // número de caracteres (.*), seguido de pelo menos uma 
+            //letra maiúscula ([A-Z]).
+
+            //-> [A-Za-z\d]{6,}: Aqui está a definição dos caracteres permitidos 
+            //e a quantidade mínima exigida.
+
+            //--> [A-Za-z\d] vai limitar os caracteres da string para aceitar 
+            // SOMENTE letras maiúsculas, mínusculas e dígitos~
+
+            /*{6,} Indica que a senha deve ter pelo menos 6 caracteres. O , 
+            após o 6 significa que não há um limite máximo de caracteres 
+            (você pode adicionar um número máximo, se quiser).
+            */
+
+            if (regex.test(senha)) {
+                let h3Senha = document.createElement("h3");
+                h3Senha.textContent = "Senha Válida!";
+                divSenha.appendChild(h3Senha);
+            } else {
+                alert("Senha Inválida.");
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!--
+ 9. Crie um formulário com um campo select (dropdown)
+  que contenha cinco cores. Ao selecionar uma cor, al-
+  tere a cor de fundo da página para a cor escolhida.
+ -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 9</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        #bkg{
+            height: 100vh;
+            width: 100%;
+        }
+
+        #form{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+            color: rgb(28, 72, 110);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 
+            'Lucida Sans', Arial, sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="form">
+                <h3>Alterar a cor da página</h3><br>
+                <select name="select">
+                    <option value="SlateBlue">Azul Bebê</option>
+                    <option value="Plum">Lilás</option>
+                    <option value="LightPink">Rosa Bebê</option>
+                </select>
+                <button type="button" onclick="mudarACor()">Enviar</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function mudarACor() {
+            let opcaoEscolhida = document.querySelector('select[name="select"]').value;
+            if (opcaoEscolhida === "SlateBlue") {
+                document.body.style.backgroundColor = "SlateBlue";
+            }
+
+            else if (opcaoEscolhida === "Plum") {
+                document.body.style.backgroundColor = "Plum";
+            }
+
+            else {
+                document.body.style.backgroundColor = "LightPink";
+            }
+        }
+    </script>
+</body>
+
+</html>

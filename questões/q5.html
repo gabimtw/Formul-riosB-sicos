@@ -1,0 +1,67 @@
+<!--5. Crie um formulário com um campo de texto 
+que aceita no máximo 50 caracteres. Exiba dina-
+micamente o número de caracteres restantes con-
+forme o usuário digita.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 5</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        #bkg {
+            background-image: radial-gradient(#dabbd9, #6a2f68);
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #form{
+           position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: #85875a;
+            text-decoration: dashed;
+        }
+
+        textarea{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <div id="form">
+            <form>
+                <h2>Contagem de dígitos</h2><bt></br>
+                <textarea id="texto" rows="3" cols="40" placeholder="Escreva seu texto:" minlength="0"
+                    maxlength="50"></textarea>
+
+                <div id="contador"></div>
+            </form>
+        </div>
+    </div>
+    <script>
+        let texto = document.getElementById("texto");
+        let div = document.getElementById("contador");
+
+        texto.addEventListener('input', function () {
+            let caracteresRestantes = 50 - texto.value.length;
+            div.textContent = caracteresRestantes + " caracteres restantes";
+        })
+    </script>
+</body>
+
+</html>

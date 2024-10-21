@@ -1,0 +1,66 @@
+<!--
+7. Crie um formulário com dois campos de senha (senha e confirmação). Se as
+senhas forem iguais, altere a borda dos campos para verde; caso contrário, altere
+para vermelho.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 7</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #bkg{
+            background-image: radial-gradient(#b1b2e4, #797baa);
+            height: 100vh;
+            width: 100%;
+        }
+
+        #form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="form">
+                <h4>Digite sua senha e a confirmação de senha</h4><br>
+                <input type="password" name="senha" id="senha" placeholder="Digite sua senha"><br><br>
+                <input type="password" name="senha" id="confirmacao" placeholder="Digite sua senha novamente">
+            </div>
+        </form>
+    </div>
+    <script>
+        let senha = document.getElementById("senha");
+        let confirmacao = document.getElementById("confirmacao");
+
+        senha.addEventListener('input', verificarSenhas);
+        confirmacao.addEventListener('input', verificarSenhas);
+
+        function verificarSenhas() {
+            if (senha.value === confirmacao.value) {
+                senha.style.borderColor = "green";
+                confirmacao.style.borderColor = "green";
+            } else {
+                senha.style.borderColor = "green";
+                confirmacao.style.borderColor = "red";
+            }
+        }
+    </script>
+</body>
+
+</html>

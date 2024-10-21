@@ -1,0 +1,104 @@
+<!--
+14. Crie um formulário com um campo de data de nascimento. 
+Valide se o usuário tem pelo menos 18 anos, impedindo o 
+envio do formulário se for menor de idade.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 14</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #bkg {
+            background-image: radial-gradient(#fba726, #cd7d1d, #9e5413, #702a0a, #420100);
+            height: 100vh;
+            width: 100%;
+        }
+
+        #form{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+
+            color: white;
+        }
+        
+        input[type="button"]{
+            color: aliceblue;
+            border: none;
+            border-radius: 45%;
+            padding: 8px;
+            background-color: #420100;
+            cursor: pointer;
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        input[type="button"]:hover{
+            background-color: #fba726;
+            color: black
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+
+            <div id="form">
+
+                <h3>Verificar idade: </h3><br>
+                <input type="date" name="data" id="data"> 
+                <input type="button" value="Enviar" onclick="mostrarIdade()">
+
+                <div id="recebe"></div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <script>
+        function mostrarIdade(){
+            let data = new Date(document.getElementById("data").value);
+            let hoje = new Date;
+
+            let idade = hoje.getFullYear() - data.getFullYear();
+            let mes = hoje.getMonth() - data.getMonth();
+
+            if (mes < 0 || mes === 0 && (hoje.getDate() < data.getDate())){
+                idade--
+            }
+
+            let div = document.getElementById("recebe");
+            div.innerHTML = "";
+
+            let h3 = document.createElement("h3");
+
+
+            if (idade >= 18){
+                h3.textContent = "Você tem mais de 18 anos, e possui " + idade + " anos.";
+            } else {
+                h3.textContent = "Você tem menos de 18 anos";
+            }
+
+            div.appendChild(h3)
+        }
+    </script>
+</body>
+
+</html>

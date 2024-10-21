@@ -1,0 +1,72 @@
+<!--
+10. Crie um formulário que capture um endereço de e-mail.
+Use JavaScript para validar se o e-mail inserido contém 
+um "@" e exiba uma mensagem de erro se não contiver.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 10</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #bkg {
+            background: radial-gradient(#7e84cf, #5459a0, #000240);
+            color: white;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+
+
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        input[type="email"] {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="form">
+                <h3>Conferir se email possui "@"</h3><br>
+                <input type="email" name="email" id="email" placeholder="Digite seu email">
+                <input type="button" value="Conferir" id="btn" onclick="conferirEmail()">
+                <div id="divEmail"></div>
+        </form>
+    </div>
+    <script>
+        function conferirEmail() {
+            let email = document.getElementById("email").value;
+
+            let h4 = document.createElement("h4");
+
+            let divEmail = document.getElementById("divEmail");
+            divEmail.innerHTML = "";
+
+            if (email.includes("@")) {
+                h4.textContent = "Seu email possui @!";
+            } else {
+                h4.textContent = "Seu email não possui @!"
+            }
+                divEmail.appendChild(h4);
+        }
+    </script>
+</body>
+
+</html>

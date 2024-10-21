@@ -1,0 +1,82 @@
+<!--
+8. Crie um formulário com três opções de
+gênero usando radio buttons. Ao clicar em
+um botão "Enviar", exiba o gênero selecionado.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 8</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        #bkg{
+            background-image: repeating-radial-gradient(#61172f, #2a0000);
+            height: 100vh;
+            width: 100%;
+        }
+
+        #form{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="form">
+                <h3>Exibir a opção selecionada</h3><br>
+                <input type="radio" name="opcoes" id="opcao1" value="Opção 1">
+                <label>Opção 1</label><br><br>
+
+                <input type="radio" name="opcoes" id="opcao2" value="Opção 2">
+                <label>Opção 2</label><br><br>
+
+                <input type="radio" name="opcoes" id="opcao3" value="Opção 3">
+                <label>Opção 3</label><br><br>
+                <div id="resultado"></div>
+
+                <button type="button" onclick="imprimir()">Enviar</button><br><br>
+            </div>
+    </div>
+    </form>
+
+    </div>
+    <script>
+        function imprimir(option) {
+            //querySelector vai buscar e selecionar todos os elementos
+            //que estão no input com name=opcoes;
+            let opcaoSelecionada = document.querySelector('input[name=opcoes]:checked');
+
+            let div = document.getElementById("resultado");
+            div.innerHTML = "";
+
+            if (opcaoSelecionada) {
+                let h4 = document.createElement("h4");
+                h4.textContent = opcaoSelecionada.value;
+
+                div.appendChild(h4);
+            } else {
+                div.textContent = "Nenhuma opção foi selecionada";
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!--
+15. Crie um formulário que tenha um campo select 
+com três opções: "Aluno", "Professor" e "Administrador".
+Dependendo da opção selecionada, exiba campos adicionais
+específicos para cada escolha (por exemplo, matrícula para
+ aluno, departamento para professor).
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 15</title>
+</head>
+
+<body>
+
+    <div class="bkg">
+
+        <form>
+
+            <div id="form">
+
+                <h3>Aparecer novos campos dependendo da escolha</h3><br><br>
+
+                <select name="select" id="opcoes">
+
+                    <option value="aluno">
+                        Aluno(a)
+                    </option>
+
+                    <option value="servidor">
+                        Servidor(a)
+                    </option>
+
+                    <option value="professor">
+                        Professor(a)
+                    </option>
+
+                </select>
+
+                <input type="button" value="Enviar" 
+                id="btn" onclick="exibirNovosCampos()">
+
+            </div>
+
+        </form>
+
+        <div id="exibirNovosCampos"></div>
+
+    </div>
+
+
+    <script>
+        function exibirNovosCampos(){
+            let escolha = document.querySelector('select[id="opcoes"]').value;
+
+            let div = document.getElementById("exibirNovosCampos");
+            div.innerHTML = "";
+
+            if (escolha === "aluno"){
+                alert("aluno");
+            } else if (escolha === "servidor"){
+                alert("servidor");
+            } else {
+                alert("professor");
+            }
+        }
+    </script>
+</body>
+
+</html>

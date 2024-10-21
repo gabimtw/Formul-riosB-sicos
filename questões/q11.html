@@ -1,0 +1,127 @@
+<!--
+ 11. Crie um formulário de cadastro com os 
+seguintes campos: nome, e-mail, senha e 
+confirmação de senha. Valide se todos os 
+campos estão preenchidos corretamente e 
+se as senhas coincidem. Exiba mensagens 
+de erro apropriadas para cada validação.
+ -->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 11</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        #bkg{
+            background-image: radial-gradient(#fdc4fc, #fa94fa, #f864f7, #f634f4);
+            height: 100vh;
+            width: 100%;
+        }
+
+        #form{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        input[type="button"]{
+            color: aliceblue;
+            border: none;
+            border-radius: 45%;
+            padding: 8px;
+            background-color: #f634f4;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover{
+            background-color: #fa94fa;
+            color: black
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="form">
+                <h3>Validar campos</h3><br><br>
+                <h4>Digite seu nome: </h4>
+                <input type="text" name="nome" id="nome"><br><br>
+
+                <h4>Digite seu email: </h4>
+                <input type="email" name="email" id="email"><br><br>
+
+                <h4>Digite sua senha: </h4>
+                <input type="password" name="senha" id="senha"><br><br>
+
+                <h4>Digite sua senha novamente: </h4>
+                <input type="password" name="senha" id="senha2"><br></br>
+
+                <input type="button" value="Enviar" id="btn" onclick="validarCampos()">
+
+                <div id="mensagens"></div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validarCampos() {
+            let nome = document.getElementById("nome").value;
+            let email = document.getElementById("email").value;
+            let senha = document.getElementById("senha").value;
+            let senha2 = document.getElementById("senha2").value;
+
+            let divMensagens = document.getElementById("mensagens");
+            divMensagens.innerHTML = "";
+
+            let erros = [];
+
+            if (nome.length === 0) {
+                erros.push("Por favor, insira um nome.");
+            }
+
+            if (email.length === 0) {
+                erros.push("Por favor, insira um email.");
+            } else if (!(email.includes("@"))) {
+                erros.push("Por favor, digite um email válido.")
+            }
+
+            if (senha.length === 0 || senha2.length === 0) {
+                erros.push("Por favor, insira uma senha.")
+            }
+
+            if (senha !== senha2) {
+                erros.push("As senhas não são iguais.")
+            }
+
+            if (erros.length > 0) {
+                //vai aplicar a function em cada termo com o forEach
+                erros.forEach(function (erro) {
+                    let h4Erro = document.createElement("h4");
+                    h4Erro.style.color = "red";
+                    h4Erro.textContent = erro;
+                    divMensagens.appendChild(h4Erro);
+                })
+            } else {
+                let sucesso = document.createElement("h4");
+                sucesso.style.color = "green";
+                sucesso.textContent = "Está tudo ok!";
+                divMensagens.appendChild(sucesso);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

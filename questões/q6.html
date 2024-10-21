@@ -1,0 +1,84 @@
+<!-- Crie um formulário com um checkbox 
+e um botão "Enviar". O botão de envio 
+deve estar desabilitado até que o 
+checkbox seja marcado.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 6</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #bkg {
+            background-image: radial-gradient(#fff593, #ffe141);
+            height: 100vh;
+            width: 100%;
+        }
+
+        #form{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            color: black;
+        }
+
+        input[type=button]{
+            border: none;
+            background-color: #ffeb6a;
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: medium;
+            border-radius: 30%;
+        }
+
+        input[type=button]:hover{
+            background-color: #ffd718;
+            color: #ffffbc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="form">
+                <h2>Você deseja testar o checkbox?</h2><br>
+                <input type="checkbox" name="checkbox" id="check">
+                <label>Sim</label>
+                <input type="button" value="Testar" onclick="testarCheckbox()"><br><br>
+                <div id="mensagem"></div>
+            </div>
+        </form>
+    </div>
+    <script>
+        let checkbox = document.getElementById("check");
+        let div = document.getElementById("mensagem");
+
+        function testarCheckbox() {
+            div.innerHTML = "";
+            if (checkbox.checked) {
+                let h3 = document.createElement("h3");
+                h3.textContent = "Você apertou o checkbox!";
+                div.appendChild(h3);
+
+            } else {
+                let novoH3 = document.createElement("h3");
+                novoH3.textContent = "Você deve apertar o checkbox.";
+
+                div.appendChild(novoH3);
+            }
+        }
+    </script>
+</body>
+
+</html>

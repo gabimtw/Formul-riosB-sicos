@@ -1,0 +1,98 @@
+<!-- 4. Crie um formulário com campos de nome e sobrenome. Ao digitar o nome, faça
+com que o sobrenome seja preenchido automaticamente com o valor "Sobrenome
+Padrão" (pode ser alterado).
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 4</title>
+    <style>
+        *{
+            margin: 0;
+        }
+
+        #bkg{
+            background-image: radial-gradient(#E6E6FA, #D8BFD8);
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100%;
+        }
+
+        #form{
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+
+            text-align: center;
+            color: #5f821e;
+            font-family: garamond;
+        }
+
+        #btnNome {
+            cursor: pointer;
+            border: none;
+            background-color: #dabbd9;
+            color: #5f821e;
+            padding: 1%;
+            font-weight: bold;
+            border-radius: 5px;
+
+
+        }
+
+        #btnNome:hover{
+            background-color: #dabbd9;
+            color: #5f821e;
+            background-color: #5f821e;
+            color: white;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div id="bkg">
+        <form>
+            <div id="form">
+                <h2>Digite seu nome e sobrenome:</h2><br>
+                <input type="text" name="nome" id="nome" required
+                placeholder="Digite seu nome">
+
+                <input type="text" id="sobrenome"
+                placeholder="Digite seu sobrenome"> 
+                <br>
+                <br>
+
+                <input type="button" name="" id="btnNome" value="Enviar"
+                onclick="juntarNomeeSobrenome()">
+                <div id="textoH3"></div>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById("nome").addEventListener('input', function(){
+            if (this.value.length > 0){
+                sobrenomeAutomatico();
+            }
+        })
+        function sobrenomeAutomatico(){
+            document.getElementById("sobrenome").value = "Sobrenome Padrão";
+        }
+
+        function juntarNomeeSobrenome(){
+            let nome1 = document.getElementById("nome").value;
+            let sobrenome1 = document.getElementById("sobrenome").value;
+
+            let h3NomeCompleto = document.createElement("h3");
+            h3NomeCompleto.textContent = nome1 + sobrenome1;
+            let textoH3 = document.getElementById("textoH3");
+            textoH3.innerHTML = "";
+
+            textoH3.appendChild(h3NomeCompleto);
+        }
+    </script>
+</body>
+</html>

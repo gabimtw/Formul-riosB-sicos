@@ -1,0 +1,99 @@
+<!--
+2. Crie um formulário com um campo obrigatório de e-mail. Quando o usuário enviar
+o formulário, verifique se o campo está vazio e exiba uma mensagem de erro, se
+necessário.
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 2</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        #bkg {
+            background-image: linear-gradient(to top, #EDD834, #F24D16);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100%;
+            margin: 0;
+        }
+
+        #fieldset {
+            width: auto;
+            left: 50%;
+            top: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+            color: white;
+            line-height: normal;
+            font-size: small;
+        }
+
+        input[type="email"] {
+            background-color: #FF8C00;
+            border-color: white;
+        }
+
+        #btn {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            border-radius: 20%;
+            padding: 3px;
+            border-color: white;
+            color: white;
+            background-color: #FFD700;
+            cursor: pointer;
+            border: none;
+        }
+
+        #btn:hover {
+            background-color: #F24D16;
+            color: #EDD834
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bkg">
+        <form>
+            <div id="fieldset">
+                <fieldset>
+                    <legend>Verificar se o campo de email está vazio</legend>
+                    <input type="email" id="email" name="email" required>
+                    <input type="button" id="btn" value="Verificar" onclick="verificarCampoVazio()">
+                    <div id="textoDeVerificacao"></div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <script>
+        function verificarCampoVazio() {
+            let email = document.getElementById("email").value;
+
+            let div = document.getElementById("textoDeVerificacao");
+            div.innerHTML = "";
+
+            let h3 = document.createElement("h3");
+
+
+            if (!(email.length === 0)) {
+                h3.textContent = "O campo de email não está vazio.";
+
+            } else {
+                h3.textContent = "O campo de email está vazio.";
+            }
+
+            div.appendChild(h3);
+        }
+    </script>
+</body>
+
+</html>
